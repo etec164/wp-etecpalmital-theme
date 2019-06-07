@@ -31,7 +31,7 @@ foreach($categories as $k => $c) {
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-danger" href="<?= get_home_url() ?>">Home</a>
+                    <a class="nav-link text-danger" href="<?= get_permalink(get_page_by_path("historico")) ?>">Histórico</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-danger" href="<?= get_permalink(get_page_by_path("biblioteca")) ?>">Biblioteca</a>
@@ -54,6 +54,9 @@ foreach($categories as $k => $c) {
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="<?= get_home_url() ?>">Home</a>
+            </li>
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown-cursos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cursos</a>
             <div class="dropdown-menu" aria-labelledby="dropdown-cursos">
