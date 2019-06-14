@@ -11,7 +11,7 @@ foreach($categories as $k => $c) {
             $menu_doc[$c->name] = [];
         }
     } else {
-        $_posts = get_posts(['post_type' => ['attachment', 'page'], 'post_status' => ['inherit', 'publish'], 'cat' => $c->term_id]);
+        $_posts = get_posts(['posts_per_page' => -1, 'post_type' => ['attachment', 'page'], 'post_status' => ['inherit', 'publish'], 'cat' => $c->term_id]);
         if(count($_posts) == 1) {
             if($_posts[0]->post_type == 'page') {
                 if($_posts[0]->post_status == 'publish') {
@@ -62,7 +62,7 @@ foreach($categories as $k => $c) {
             <div class="dropdown-menu" aria-labelledby="dropdown-cursos">
                 <?php foreach(get_categories(['child_of' => get_category_by_slug('cursos')->term_id]) as $category): ?>
                 <h6 class="dropdown-header"><?= $category->name ?></h6>
-                    <?php foreach(get_posts(['category_name' => $category->name, 'orderby' => 'title', 'order' => 'ASC']) as $post): setup_postdata($post) ?>
+                    <?php foreach(get_posts(['posts_per_page' => -1, 'category_name' => $category->name, 'orderby' => 'title', 'order' => 'ASC']) as $post): setup_postdata($post) ?>
                     <a class="dropdown-item" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                     <?php wp_reset_postdata(); ?>
                     <?php endforeach ?>
@@ -107,7 +107,7 @@ foreach($categories as $k => $c) {
 
         <ul class="navbar-nav d-lg-none">
             <li class="nav-item">
-            <a class="btn btn-outline-light" href="<?= get_home_url() ?>">Home</a>&nbsp;
+            <a class="btn btn-outline-light" href="<?= get_permalink(get_page_by_path("historico")) ?>">Histórico</a>&nbsp;
             </li>
             <li class="nav-item">
             <a class="btn btn-outline-light" href="<?= get_permalink(get_page_by_path("biblioteca")) ?>">Biblioteca</a>&nbsp;
